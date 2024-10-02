@@ -1,0 +1,17 @@
+name: Terraform Infra Apply - AP East 1
+on:
+  pull_request:
+    paths:
+      - 'infra/int/ap-southeast-1/**'
+    types:
+      - closed
+    branches:
+      - main
+permissions:
+  id-token: write
+  contents: read
+jobs:
+  call-terraform-apply-workflow:
+    uses: ./.github/workflows/terraform_apply_workflow.yml
+    with:
+      region: ap-southeast-1
